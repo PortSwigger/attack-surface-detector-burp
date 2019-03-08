@@ -2,11 +2,11 @@ Uuid: 47027b96525d4353aea5844781894fb1
 ExtensionType: 1
 Name: Attack Surface Detector
 RepoName: attack-surface-detector
-ScreenVersion: 1.1.2
-SerialVersion: 1
+ScreenVersion: 1.2.3
+SerialVersion: 2
 MinPlatformVersion: 0
 ProOnly: False
 Author: Drew Kirkpatrick, Matthew DeLetto
 ShortDescription: Use static analysis to identify web app endpoints by parsing routes and identying parameters.
-EntryPoint: burp/target/attacksurfacedetector-release-1.12-jar-with-dependencies.jar
+EntryPoint: burp/target/attacksurfacedetector-release-1.13-jar-with-dependencies.jar
 BuildCommand: mvn package -DskipTests=true -Dmaven.javadoc.skip=true -B
