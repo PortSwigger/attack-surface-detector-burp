@@ -375,12 +375,14 @@ public class BurpExtender implements IBurpExtender, ITab
         final JLabel differenceGeneratorPanelTitle = addPanelTitleToGridBagLayout("Attack Surface Difference Generator", differenceGeneratorPanel, yPosition++);
         final JLabel differenceGeneratorDescription = addPanelDescriptionToGridBagLayout("<html>The Attack Surface Difference Generator is a feature of the Attack Surface Detector plugin that is when importing from both source code or JSON.<br>" +
                 " This feature is automatically enabled when two seperate versions of the same application are given on the configurations page and provides the following benefits:<html>" , differenceGeneratorPanel, yPosition++);
+        differenceGeneratorDescription.putClientProperty("html.disable", null);
 
         final JLabel listLabel = addPanelDescriptionToGridBagLayout("<html><li> Compares two versions highlighting the differences between endpoints" +
                         " The results table will mark new or modified endpoints signifiny a change in the attack surface</li><br>" +
                         "<li>Viewing the details of a modified endpoint will show which parameters have been added, modified or deleted including data types and names</li><br>" +
                         "<li>Viewing the details of a new endpoint will display that the endpoint was not found in the previous version and show it's parameters if applicable</li></html>",
                 differenceGeneratorPanel, yPosition++);
+        listLabel.putClientProperty("html.disable", null);
 
         return differenceGeneratorPanel;
     }
@@ -393,7 +395,9 @@ public class BurpExtender implements IBurpExtender, ITab
         final JLabel generalHelpPanelTitle = addPanelTitleToGridBagLayout("General Help", generalHelpPanel, yPosition++);
         final JLabel generalHelpPanelDescription = addPanelDescriptionToGridBagLayout("<html>The purpose of this section is to aid in general Attack Surface Detector usage. For any information or questions not addressed below please visit the following link:</html>", generalHelpPanel, yPosition++);
         String link = "<html><a href=\"https://github.com/secdec/attack-surface-detector-burp/wiki\" target=\"https://github.com/secdec/attack-surface-detector-burp/wiki\">https://github.com/secdec/attack-surface-detector-burp/wiki</a></html>";
+        generalHelpPanelDescription.putClientProperty("html.disable", null);
         final JLabel linkLabel = addPanelDescriptionToGridBagLayout(link, generalHelpPanel, yPosition++);
+        linkLabel.putClientProperty("html.disable", null);
         linkLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         linkLabel.addMouseListener(new MouseAdapter()
         {
@@ -422,6 +426,7 @@ public class BurpExtender implements IBurpExtender, ITab
                         "<li> To import endpoints in order to view their details without attacking the webapplication simply leave the target configuration empty and select submit on the pop up dialog</li><br>" +
                         "<li> To view the details of a specific endpoint simply click on an endpoint listed in the endpoints table of the main page</li><br></html>",
                 generalHelpPanel, yPosition++);
+        importLabel.putClientProperty("html.disable", null);
 
         return generalHelpPanel;
     }
@@ -433,6 +438,7 @@ public class BurpExtender implements IBurpExtender, ITab
         int yPosition = 0;
         final JLabel frameworkPanelTitle = addPanelTitleToGridBagLayout("Supported Frameworks", frameworkPanel, yPosition++);
         final JLabel frameworkPanelDescription = addPanelDescriptionToGridBagLayout("<html>The Attack Surface Detector uses static code analysis to identify web app endpoints by parsing routes and identifying parameters.<br> The following is a list of the supported languages and frameworks:</html>", frameworkPanel, yPosition++);
+        frameworkPanelDescription.putClientProperty("html.disable", null);
         final JLabel frameworksList = addPanelDescriptionToGridBagLayout("<html><li>C# / ASP.NET MVC </li><br>" +
                 "<li>C# / Web Forms </li><br>" +
                 "<li>Java / Spring MVC </li><br>" +
@@ -440,6 +446,7 @@ public class BurpExtender implements IBurpExtender, ITab
                 "<li>Java / JSP </li><br>" +
                 "<li>Python / Django </li><br>" +
                 "<li>Ruby / Rails <br></li></html>", frameworkPanel, yPosition++);
+        frameworksList.putClientProperty("html.disable", null);
 
         return frameworkPanel;
     }
@@ -451,12 +458,16 @@ public class BurpExtender implements IBurpExtender, ITab
         int yPosition = 0;
         final JLabel fileFormatPanelTitle = addPanelTitleToGridBagLayout("Accepted File Formats", fileFormatPanel, yPosition++);
         final JLabel sourcePanelDescription = addPanelDescriptionToGridBagLayout("<html>When importing endpoints from source code the accepted formats are as follows:</html>", fileFormatPanel, yPosition++);
+        sourcePanelDescription.putClientProperty("html.disable", null);
         final JLabel zipFormatList = addPanelDescriptionToGridBagLayout("<html><li>Zip file | *.zip: A compresed version of a source code folder</li><br>" +
                 "<li>War file | *.war: A .war file that contains compiled source code</li><br>"  +
                 "<li>Directory | dir: A directory containing the source code of a supported framework</li><br></html>", fileFormatPanel, yPosition++);
+        zipFormatList.putClientProperty("html.disable", null);
         final JLabel jsonPanelDescription = addPanelDescriptionToGridBagLayout("<html>When importing endpoints from CLI JSON you must first have a serialized Attack Surface Detector-CLI JSON output file.  <br>To locate this tool and for general usage visit the Attack Surface Detector-CLI github page located below:</html>",fileFormatPanel, yPosition++);
+        jsonPanelDescription.putClientProperty("html.disable", null);
         String link = "<html><a href=\"https://github.com/secdec/attack-surface-detector-cli\" target=\"https://github.com/secdec/attack-surface-detector-cli\">https://github.com/secdec/attack-surface-detector-cli</a></html>";
         final JLabel linkLabel = addPanelDescriptionToGridBagLayout(link, fileFormatPanel, yPosition++);
+        linkLabel.putClientProperty("html.disable", null);
         linkLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         linkLabel.addMouseListener(new MouseAdapter()
         {
@@ -536,6 +547,7 @@ public class BurpExtender implements IBurpExtender, ITab
             {
                 String displayStr = new String();
                 displayArea.setText(displayStr);
+                displayArea.putClientProperty("html.disable", null);
                 EndpointDecorator decorator = (EndpointDecorator)endpointsTable.getModel().getValueAt(endpointsTable.getSelectedRow(), 5);
                 Endpoint.Info endpoint = decorator.getEndpoint();
                 if(decorator.getStatus() == EndpointDecorator.Status.NEW)
@@ -599,6 +611,7 @@ public class BurpExtender implements IBurpExtender, ITab
 
                 displayStr = displayStr + "</html>";
                 displayArea.setText(displayStr);
+                displayArea.putClientProperty("html.disable", null);
 
             }
             @Override
@@ -699,9 +712,12 @@ public class BurpExtender implements IBurpExtender, ITab
 
         final JLabel sourcePanelTitle = addPanelTitleToGridBagLayout("Local Source Code", sourcePanel, yPosition++);
         final JLabel sourcePanelDescription = addPanelDescriptionToGridBagLayout("<html>This setting lets you configure the location of your source code.<br>For more information on supported frameworks and general usage click the link below:", sourcePanel, yPosition++);
+        sourcePanelDescription.putClientProperty("html.disable", null);
         String link = "<html><a href=\"https://github.com/secdec/attack-surface-detector-burp/wiki\" target=\"https://github.com/secdec/attack-surface-detector-burp/wiki\">https://github.com/secdec/attack-surface-detector-burp/wiki</a></html>";
         final JLabel linkLabel = addPanelDescriptionToGridBagLayout(link, sourcePanel, yPosition++);
+        linkLabel.putClientProperty("html.disable", null);
         final JLabel differenceGeneratorDescription = addPanelDescriptionToGridBagLayout("<html><br>You can optionally choose to compare two different versions of the source code, and the Attack Surface Detector <br>will highlight endpoints and parameters that are new or modified in the newer version of the source code.</html>", sourcePanel, yPosition++);
+        differenceGeneratorDescription.putClientProperty("html.disable", null);
         final JLabel sourcePanelDescription2 = addPanelDescriptionToGridBagLayout(" ", sourcePanel, yPosition++);
         linkLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
@@ -814,8 +830,11 @@ public class BurpExtender implements IBurpExtender, ITab
 
         final JLabel serializationPanelTitle = addPanelTitleToGridBagLayout("Attack Surface Detector CLI JSON", serializationPanel, yPosition++);
         final JLabel serializationPanelDescription = addPanelDescriptionToGridBagLayout("<html>The CLI tool is a command line interface version of Attack Surface Detector that can produce a serialized JSON output of a supported web applications endpoints. <br>To find this tool or help using it please visit the link below:</html>", serializationPanel, yPosition++);
+        serializationPanelDescription.putClientProperty("html.disable", null);
         final JLabel linkLabel = addPanelDescriptionToGridBagLayout(link, serializationPanel, yPosition++);
+        linkLabel.putClientProperty("html.disable", null);
         final JLabel differenceGeneratorDescription = addPanelDescriptionToGridBagLayout("<html><br>You can optionally choose to compare two different versions of the endpoint JSON files, and the Attack Surface Detector <br>will highlight endpoints and parameters that are new or modified in the newer version of the application.</html>", serializationPanel, yPosition++);
+        differenceGeneratorDescription.putClientProperty("html.disable", null);
         final JLabel serializationPanelDescription2 = addPanelDescriptionToGridBagLayout(" ", serializationPanel, yPosition++);
         linkLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
